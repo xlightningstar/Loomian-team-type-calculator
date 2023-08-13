@@ -4,7 +4,7 @@ from prettytable import PrettyTable
 
 #fire-0,water-1,plant-2,light-3,dark-4,ice-5,electric-6,air-7,bug-8,earth-9,toxic-10,metal-11,ancient-12,spirit-13,brawler-14,mind-15,typeless-16,none-17
 table = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], #None (/)
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], #None
   [0.5,2,0.5,1,1,0.5,1,2,0.5,2,1,0.5,1,1,1,1,1], #Fire
   [0.5,0.5,2,1,1,0.5,2,1,1,1,2,0.5,1,1,1,1,1], #Water
   [2,0.5,0.5,0,2,2,0.5,1,2,0.5,2,1,1,1,1,1,1], #Plant
@@ -28,13 +28,18 @@ loomtypes = [["/",0],["fire",1],["water",2],["plant",3],["light",4],["dark",5],[
 loomlist = []
 
 #info on how to work the program
+print("")
 print(Fore.WHITE+"Type your loomian types one after the other e.g. 'mind spirit' or 'fire'")
 print("")
 
 #Gets the number of loomians on the team
 def howManyLooms():
     while True:
-        loomnum = int(input("How many loomians do you want to include in your team? (1-6) "))
+        loomnum = input("How many loomians do you want to include in your team? (1-6) ")
+        try:
+          loomnum = int(loomnum)
+        except ValueError:
+          pass
         if type(loomnum) == int and loomnum > 0 and loomnum <= 6:
             break
         else:
@@ -150,7 +155,7 @@ for i in range(len(teamEffects)):
         resisted.append(loomtypes[j+1][0])
   for j in range(len(teamEffects[0])):
     if teamEffects[i][j] == 0:
-      row[len(row)-1]+=("["+Fore.BLUE+loomtypes[j+1][0]+" imn"+Fore.WHITE+"]"+" ")
+      row[len(row)-1]+=("["+Fore.MAGENTA+loomtypes[j+1][0]+" imn"+Fore.WHITE+"]"+" ")
       if loomtypes[j+1][0] not in resisted:
         resisted.append(loomtypes[j+1][0])
   type_table.add_row(row)
@@ -178,17 +183,18 @@ type_table.add_row(row)
 
 print(Fore.WHITE)
 print(type_table)
-print("")
 
 unresisted = []
 for i in range(1,len(loomtypes)):
   if loomtypes[i][0] not in resisted:
     unresisted.append(loomtypes[i][0])
 
-print("Unresisted: ",end=" ")
+print(Fore.YELLOW+"Unresisted: ",end=" ")
 for i in range(len(unresisted)):
-  print("["+unresisted[i]+"]",end=" ")
+  print(Fore.YELLOW+"["+unresisted[i]+"]",end=" ")
 
 if unresisted == []:
   print(Fore.RED+"N"+Fore.LIGHTYELLOW_EX+"o"+Fore.YELLOW+"t"+Fore.GREEN+"h"+Fore.BLUE+"i"+Fore.CYAN+"n"+Fore.MAGENTA+"g"+Fore.WHITE+"!")
-  
+
+print(Fore.WHITE)
+print("")
