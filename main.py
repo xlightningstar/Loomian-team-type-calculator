@@ -1,6 +1,6 @@
-import colorama
-from colorama import Fore
+from colorama import Fore, init
 from prettytable import PrettyTable
+init()
 
 #fire-0,water-1,plant-2,light-3,dark-4,ice-5,electric-6,air-7,bug-8,earth-9,toxic-10,metal-11,ancient-12,spirit-13,brawler-14,mind-15,typeless-16,none-17
 table = [
@@ -198,3 +198,4 @@ if unresisted == []:
 
 print(Fore.WHITE)
 print("")
+input("")
