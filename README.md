@@ -10,5 +10,5 @@ How to run:
 2. Download the code
 3. Open cmd
 4. Use cd to change directory to the directory in which the program is installed: https://www.wikihow.com/Change-Directories-in-Command-Prompt
-5. run "pip install -r requirements.txt" (This installs the required packages)
+5. Run "pip install -r requirements.txt" (This installs the required packages)
 6. Now you can run main.py to run the program
